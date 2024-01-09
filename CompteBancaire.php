@@ -87,11 +87,23 @@ class CompteBancaire {
         else {
             $this->afficherSolde();
             $this->_solde -= $montantDebit;
-            echo "Le compte $this a bien été débité d'un montant de : $montantDebit $this->_devise. <br>
-            Le nouveau solde est de : $this->_solde $this->_devise <br>";
+            echo "Le compte $this a bien été débité d'un montant de : $montantDebit $this->_devise. <br>";
+            $this->afficherSolde();
             echo "<br>------------------------------------------------------------<br>";
         }
     }
+
+    public function effectuerVirement($libelle, float $montantVirement) {
+        $this->afficherSolde();
+        $this->_solde -= $montantVirement;
+        $compteCredite = $libelle->getSolde(); 
+        $compteCredite += $montantVirement;
+        echo "Le virement d'un montant de $montantVirement $this->_devise a bien été effectué depuis le compte $this vers le compte $libelle.<br>";
+        $this->afficherSolde();
+        echo "Le solde de $libelle est de : $compteCredite $this->_devise"; // manque la MAJ du compte crédité !
+    }
+
+    
 
     public function __toString() {
         return "$this->_libelle";
