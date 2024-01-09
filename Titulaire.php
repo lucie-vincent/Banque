@@ -1,0 +1,71 @@
+<?php
+
+class Titulaire {
+
+    //attributs - propriétés
+    private string $_nom;
+    private string $prenom;
+    private DateTime $_dateNaissance;
+    private string $_ville;
+
+    // constructeur
+    public function __construct(string $nom, string $prenom, string $dateNaissance, string $ville) {
+
+        $this->_nom = $nom;
+        $this->_prenom = $prenom;
+        $this->_dateNaissance = new DateTime($dateNaissance);
+        $this->_ville = $ville;
+    }
+
+    //accesseurs - getters
+    public function getNom() : string {
+        return $this->_nom;
+    }
+
+    public function getPrenom() : string {
+        return $this->_prenom;
+    }
+
+    public function getDateNaissance() : DateTime {
+        return $this->_dateNaissance;
+    }
+
+    public function getVille() : string {
+        return $this->_ville;
+    }
+
+    //mutateurs - setters
+    public function setNom(string $nom) {
+        $this->_nom = $nom;
+    }
+
+    public function setPrenom(string $prenom) {
+        $this->_prenom = $prenom;
+    }
+
+    public function setDateNaissance(DateTime $dateNaissance) {
+        $this->_dateNaissance = $dateNaissance;
+    }
+
+    //méthodes
+
+    public function calculAge() {
+        $dateCourante = new DateTime;
+        $interval = date_diff($this->_dateNaissance, $dateCourante);
+        return $interval->format("%y ans");
+    }
+
+    public function afficherInfosTitulaire() {
+        $resultat = "<h2>Informations de $this</h2>
+                    <p>Nom : $this->_nom</p>
+                    <p>Prenom : $this->_prenom</p>
+                    <p>Age : " . $this->calculAge() . " </p>
+                    <p>Comptes bancaires : </p>";  // ajouter les comptes bancaires
+        return $resultat;
+    }
+
+    public function __tostring() {
+        return "$this->_prenom $this->_nom <br>";
+    }
+
+}
