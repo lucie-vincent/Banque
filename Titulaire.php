@@ -75,10 +75,12 @@ class Titulaire {
                     <p>Nom : $this->_nom</p>
                     <p>Prenom : $this->_prenom</p>
                     <p>Age : " . $this->calculAge() . " </p>
-                    <p>Comptes bancaires : ";
+                    <p>Comptes bancaires : <ul>";
         foreach ($this->_comptesBancaires as $compteBancaire) {
             $resultat .= $compteBancaire . " </p>" ;
         }  
+
+        $resultat .= "</ul>";
         return $resultat;
     }
 

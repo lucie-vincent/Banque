@@ -11,5 +11,10 @@ $compteCourant = new CompteBancaire("Compte Courant", 150, "€", $lucieVincent)
 $livretA = new CompteBancaire("Livret A", 350, "€", $lucieVincent);
 
 
-// echo $lucieVincent->afficherInfosTitulaire();
+echo $lucieVincent->afficherInfosTitulaire();
+echo $compteCourant->afficherInfosCompteBancaire();
+echo $livretA->afficherInfosCompteBancaire();
+$compteCourant->crediter(150);
+$compteCourant->debiter(400);
+$compteCourant->crediter(1000);
 echo $compteCourant->afficherInfosCompteBancaire();
