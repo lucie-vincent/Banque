@@ -7,12 +7,9 @@ spl_autoload_register(function ($class_name) {
 
 $lucieVincent = new Titulaire("VINCENT", "Lucie", "1994-11-22", "STRASBOURG");
 
-echo $lucieVincent->afficherInfosTitulaire();
-
 $compteCourant = new CompteBancaire("Compte Courant", 150, "€", $lucieVincent);
+$livretA = new CompteBancaire("Livret A", 350, "€", $lucieVincent);
 
-var_dump($compteCourant);
 
-echo $compteCourant;
-
+// echo $lucieVincent->afficherInfosTitulaire();
 echo $compteCourant->afficherInfosCompteBancaire();

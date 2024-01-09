@@ -7,6 +7,7 @@ class CompteBancaire {
     private float $_solde;
     private string $_devise;
     private Titulaire $_titulaire;
+    
 
     // constructeur
     public function __construct(string $libelle, float $solde, string $devise, Titulaire $titulaire) {
@@ -14,6 +15,7 @@ class CompteBancaire {
         $this->_solde = $solde;
         $this->_devise = $devise;
         $this->_titulaire = $titulaire;
+        $this->_titulaire->addCompteBancaire($this);
     }
 
     //accesseurs - getters
@@ -29,7 +31,7 @@ class CompteBancaire {
         return $this->_devise;
     }
 
-    public function getTitulaire() {
+    public function getTitulaire() : Titulaire {
         return $this->_titulaire;
     }
 
@@ -50,16 +52,17 @@ class CompteBancaire {
         $this->_titulaire = $titulaire;
     }
 
+
     //méthodes
 
     public function afficherInfosCompteBancaire() {
-        $resultat = "<h2> Informations du $this <h2>
-                    <p>Solde : $this->_solde $this->_devise</p>";
+        $resultat = "<h2> Informations du $this </h2>
+                    <p>Solde : $this->_solde $this->_devise appartient à $this->_titulaire</p>";
         return $resultat;
     }
 
     public function __toString() {
-        return "$this->_libelle de $this->_titulaire";
+        return "$this->_libelle";
     }
 
 }
