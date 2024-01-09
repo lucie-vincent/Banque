@@ -64,7 +64,7 @@ class Titulaire {
         return $resultat;
     }
 
-    public function __tostring() {
+    public function __toString() {
         return "$this->_prenom $this->_nom <br>";
     }
 
