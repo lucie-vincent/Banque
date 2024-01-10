@@ -94,20 +94,16 @@ class CompteBancaire {
         }
     }
 
-    public function effectuerVirement($libelle, float $montantVirement) {
+    public function effectuerVirement($compteCible, float $montantVirement) {
         echo "<h3>Demande de virement : </h3>";
+        $this->debiter($montantVirement);
+        $compteCible->crediter($montantVirement);
+        echo "Le virement d'un montant de $montantVirement $this->_devise a bien été effectué depuis le compte $this vers le compte $compteCible.<br>";
         $this->afficherSolde();
-        $this->_solde -= $montantVirement;
-        $compteCredite = $libelle->getSolde(); 
-        $compteCredite += $montantVirement;
-        $libelle->setSolde($compteCredite);
-        echo "Le virement d'un montant de $montantVirement $this->_devise a bien été effectué depuis le compte $this vers le compte $libelle.<br>";
-        $this->afficherSolde();
-        echo "Le solde de $libelle est de : $compteCredite $this->_devise"; 
+        echo "Le solde de $compteCible est de : $compteCible->_solde $this->_devise"; 
         echo "<br>------------------------------------------------------------<br>";
     }
 
-    
 
     public function __toString() {
         return "$this->_libelle";
