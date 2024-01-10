@@ -72,7 +72,7 @@ class CompteBancaire {
         $this->_solde += $montantCredit;
         echo "Le compte $this a bien été crédité d'un montant de : $montantCredit $this->_devise. <br>";
         $this->afficherSolde();
-        echo "<br>------------------------------------------------------------<br>";
+        echo "------------------------------------------------------------<br>";
     }
 
     public function debiter(float $montantDebit) {
@@ -80,17 +80,17 @@ class CompteBancaire {
         echo "<h3>Demande de débit : </h3>";
         if($this->_solde <=0) {
             echo "Le solde de $this est négatif. Ce compte ne peut être débité.<br>";
-            echo "<br>------------------------------------------------------------<br>";
+            echo "------------------------------------------------------------<br>";
         }
         else if($montantDebit >= $this->_solde) {
             echo "Le montant à débiter dépasse le solde du compte $this. Ce compte ne peut être débité d'un montant de $montantDebit $this->_devise. <br> ";
-            echo "<br>------------------------------------------------------------<br>";
+            echo "------------------------------------------------------------<br>";
         }
         else {
             $this->_solde -= $montantDebit;
             echo "Le compte $this a bien été débité d'un montant de : $montantDebit $this->_devise. <br>";
             $this->afficherSolde();
-            echo "<br>------------------------------------------------------------<br>";
+            echo "------------------------------------------------------------<br>";
         }
     }
 
@@ -104,6 +104,7 @@ class CompteBancaire {
         echo "Le virement d'un montant de $montantVirement $this->_devise a bien été effectué depuis le compte $this vers le compte $libelle.<br>";
         $this->afficherSolde();
         echo "Le solde de $libelle est de : $compteCredite $this->_devise"; 
+        echo "<br>------------------------------------------------------------<br>";
     }
 
     

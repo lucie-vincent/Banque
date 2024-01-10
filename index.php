@@ -17,3 +17,4 @@ echo $livretA->afficherInfosCompteBancaire();
 $compteCourant->effectuerVirement($livretA, 50);
 echo $livretA->afficherInfosCompteBancaire();
 $livretA->crediter(60);
+echo $compteCourant->afficherInfosCompteBancaire();
