@@ -16,3 +16,4 @@ $livretA = new CompteBancaire("Livret A", 350, "€", $lucieVincent);
 echo $livretA->afficherInfosCompteBancaire();
 $compteCourant->effectuerVirement($livretA, 50);
 echo $livretA->afficherInfosCompteBancaire();
+$livretA->crediter(60);
